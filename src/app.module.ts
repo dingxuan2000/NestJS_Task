@@ -6,9 +6,6 @@ import { DataSource } from 'typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TasksModule } from './tasks/tasks.module';
 import { Tasks } from './tasks/entities/task.entity';
-import { TasksController } from './tasks/tasks.controller';
-import { TasksService } from './tasks/tasks.service';
-import { join } from 'path';
 
 @Module({
   imports: [

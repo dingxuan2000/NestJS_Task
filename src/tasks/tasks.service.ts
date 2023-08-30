@@ -10,13 +10,13 @@ export class TasksService {
   constructor(@InjectRepository(Tasks) private readonly tasksRepository: Repository<Tasks>) { }
 
   async create(createTaskDto: CreateTaskDto) {
-    const task = this.tasksRepository.create(createTaskDto);
-    return await this.tasksRepository.save(task);
+    const task = this.tasksRepository.create(createTaskDto); //task = new Task(), task.title = title
+    return await this.tasksRepository.save(task); //save into DB and return an object
   }
 
 
-  findOne(id: number) {
-    return this.tasksRepository.find({where: {id}});
+  async findOne(id: number) {
+    return await this.tasksRepository.find({where: {id}});
   }
 
   async delete(id: number){
