@@ -1,35 +1,40 @@
-import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
+import { ForbiddenException, HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Tasks } from './entities/task.entity';
-import { Repository } from 'typeorm';
+import { PrismaService } from '../prisma/prisma.service';
+
 
 @Injectable()
 export class TasksService {
-  constructor(@InjectRepository(Tasks) private readonly tasksRepository: Repository<Tasks>) { }
+  constructor(private prisma: PrismaService) { }
 
-  async create(createTaskDto: CreateTaskDto) {
-    const task = this.tasksRepository.create(createTaskDto); //task = new Task(), task.title = title
-    return await this.tasksRepository.save(task); //save into DB and return an object
+  async create(dto: CreateTaskDto) {
+    const task = await this.prisma.task.create({
+      data: {...dto}
+    }); 
+    return task; 
   }
 
   async findOne(id: number) {
-    const task = await this.tasksRepository.findOne({ where: { id } });
-    //check if task exists
-    if(task == null)
-      throw new HttpException('Id not found', HttpStatus.NOT_FOUND);
+    const task = await this.prisma.task.findUnique({
+      where: {id}
+    });
+
+    if(!task){
+      throw new ForbiddenException('Task not exist in DB, cannot find it');
+    }
     return task;
   }
 
   async delete(id: number){
-    const task = await this.tasksRepository.findOne({ where: {id}});
-    //check if task exists
-    console.log(task);
-    if(task == null)
-      throw new HttpException('Id not found, cannot delete', HttpStatus.NOT_FOUND);
-    return await this.tasksRepository.remove(task);
+    const task = await this.prisma.task.findUnique({ where: {id}});
+    if(!task){
+      throw new ForbiddenException('Task not exist in DB, cannot delete it');
+    }
+
+    return this.prisma.task.delete({
+      where: {id:id}
+    });
 
   }
-
 
 }
