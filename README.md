@@ -58,6 +58,24 @@ $ npm run test:e2e:watch
 $ npm run test:cov
 ```
 
+## Test on Postman
+
+```bash
+# POST -> Create a new task
+$ POST http://localhost:3000/tasks
+raw example data:
+  {
+    "title": "Task I",
+    "description": "create a new task",
+    "status": "TODO"
+  }
+
+# GET -> Get a task by id
+$ GET http://localhost:3000/tasks/1
+
+# delete -> Delete a task by id
+$ DELETE http://localhost:3000/tasks/1
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
