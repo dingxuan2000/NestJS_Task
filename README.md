@@ -96,6 +96,22 @@ $ npx prisma init
 $ npx prisma studio
 ```
 
+## Reference (Video & Documentation)
+
+https://www.youtube.com/watch?v=GHTA143_b-s
+
+https://www.youtube.com/watch?v=dAy4TZXzZck
+
+https://www.google.com/search?q=nestjs+unit+test+for+crud&rlz=1C5MACD_enUS1033US1033&oq=nestjs+unit+test+for+crud&aqs=chrome..69i57j33i160l2.7958j0j9&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:1855f3b8,vid:dXOfOgFFKuY
+
+https://www.npmjs.com/package/supertest
+
+https://dev.to/niemet0502/writing-unit-tests-for-your-nestjs-rest-api-3cgg
+
+ https://www.youtube.com/watch?v=J5As5D_Ht_w&t=1510s
+
+
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
