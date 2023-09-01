@@ -75,6 +75,7 @@ $ GET http://localhost:3000/tasks/1
 
 # delete -> Delete a task by id
 $ DELETE http://localhost:3000/tasks/1
+```
 
 ## Support
 
