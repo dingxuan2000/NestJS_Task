@@ -77,6 +77,25 @@ $ GET http://localhost:3000/tasks/1
 $ DELETE http://localhost:3000/tasks/1
 ```
 
+## Dockerize Nest.js with Prisma
+
+```bash
+# build environment on docker compose
+$ docker compose up dev-db -d
+$ docker ps
+$ docker logs <logId>
+
+# nstall prisma package
+$ yarn add -D prisma
+$ yarn add @prisma/client
+
+# access to prisma: generates .env file and prisma folder
+$ npx prisma init
+
+# Put Task model into prisma schema & show the visual webpage of table Task
+$ npx prisma studio
+```
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
