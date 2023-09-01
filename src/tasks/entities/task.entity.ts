@@ -1,9 +1,4 @@
-import { Field, registerEnumType } from '@nestjs/graphql';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-
-// export enum StatusEnum{
-//     TODO, IN_PROGRESS, COMPLETED
-// }
 
 export enum StatusEnum{
     TODO = "TODO", 
@@ -11,9 +6,6 @@ export enum StatusEnum{
     COMPLETED = "COMPLETED"
 }
 
-// registerEnumType(StatusEnum, {
-//     name: 'StatusEnum',
-// });
 
 @Entity({ name: 'tasks' })
 export class Tasks {

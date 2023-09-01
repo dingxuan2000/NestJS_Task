@@ -59,7 +59,7 @@ describe('TasksController (e2e)', () => {
             });
     });
 
-
+    //Failed Test: Get task by existent id
     //   it('/tasks/id (GET) => return 200 and return found task data',  () => {
     //     const id = 1;
     //     const task = {
@@ -98,7 +98,7 @@ describe('TasksController (e2e)', () => {
         expect(response.statusCode).toEqual(404);
     });
 
-
+    //Failed Test: delete task by existent id
     //   it('/tasks/id (DELETE)', async () => {
     //     const task = request(app.getHttpServer())
     //     .post('/tasks')
