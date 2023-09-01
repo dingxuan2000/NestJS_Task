@@ -1,6 +1,5 @@
 import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Tasks } from './entities/task.entity';
 import { Repository } from 'typeorm';
@@ -14,18 +13,23 @@ export class TasksService {
     return await this.tasksRepository.save(task); //save into DB and return an object
   }
 
-
   async findOne(id: number) {
-    return await this.tasksRepository.find({where: {id}});
+    const task = await this.tasksRepository.findOne({ where: { id } });
+    //check if task exists
+    if(task == null)
+      throw new HttpException('Id not found', HttpStatus.NOT_FOUND);
+    return task;
   }
 
   async delete(id: number){
     const task = await this.tasksRepository.findOne({ where: {id}});
-    //check that record exists
+    //check if task exists
     console.log(task);
     if(task == null)
-      throw new HttpException('Id not found', HttpStatus.NOT_FOUND);
+      throw new HttpException('Id not found, cannot delete', HttpStatus.NOT_FOUND);
     return await this.tasksRepository.remove(task);
 
   }
+
+
 }

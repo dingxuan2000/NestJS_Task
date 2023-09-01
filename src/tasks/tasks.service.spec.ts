@@ -1,8 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TasksService } from './tasks.service';
-import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
+import { getRepositoryToken } from '@nestjs/typeorm';
 import { StatusEnum, Tasks } from './entities/task.entity';
-import { TasksModule } from './tasks.module';
 
 describe('TasksService', () => {
   let service: TasksService;
